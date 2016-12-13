@@ -1,4 +1,9 @@
 ---
 - hosts: all
+  tasks:
+    - name: 'Install OpenJDK 8 JRE headless'
+      apt:
+        name: 'openjdk-8-jre-headless'
+        state: 'present'
   roles:
     - role: ansible-gimp-dependencies
