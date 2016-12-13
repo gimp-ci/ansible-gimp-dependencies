@@ -8,7 +8,21 @@ In Debian, this ansible role will:
 
 # Requirements
 
-Debian Jessie or Debian Stretch/Testing
+* Debian Jessie or Debian Stretch/Testing (WARNING: this will convert Debian
+  Jessie to Debian Testing)
+* Python 2.7 - https://www.python.org/ - scripting language used by Ansible and
+  Molecule.
+* Vagrant - https://www.vagrantup.com/ - VirtualBox provisioning layer.
+* VirtualBox - https://www.virtualbox.org/ - Virtualization software.
+* Virtualenv - https://virtualenv.pypa.io/ - user-managed python environment
+  which simplifies development.
+
+This role was last tested on Ubuntu 16.04.1 LTS with the following versions:
+
+    Python 2.7.12
+    Vagrant 1.8.6
+    VirtualBox 5.0.24_Ubuntur108355
+    Virtualenv 15.0.1
 
 # Role Variables
 
@@ -26,6 +40,26 @@ Usage in a playbook includes:
     - hosts: servers
       roles:
          - ansible-gimp-dependencies
+
+# Getting Started
+
+To start testing out this role:
+
+```
+git clone https://github.com/gimp-ci/ansible-gimp-dependencies.git
+cd ansible-gimp-dependencies
+virtualenv --python=$(type -p python2.7) .venv
+source .venv/bin/activate
+pip install -U pip
+pip install -r test-reqs.txt
+#now ready for development or running
+molecule create
+molecule converge
+```
+
+`molecule create` will create a VM based on Debian Jessie.  `molecule converge`
+will execute this ansible role to perform all of the tasks defined in
+[`tasks/main.yml`](tasks/main.yml).
 
 ### License
 
