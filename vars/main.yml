@@ -13,13 +13,14 @@ babl_deps:
   - libtool
   - pkg-config
 gegl_deps:
+#https://bugzilla.gnome.org/show_bug.cgi?id=776033
+#  - libjasper-dev
   - asciidoc
   - enscript
   - intltool
   - libexiv2-dev
   - libgexiv2-dev
   - libglib2.0-dev
-#  - libjasper-dev
   - libjpeg-dev
   - libjson-glib-dev
   - liblua5.1-0-dev
