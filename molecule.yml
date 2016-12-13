@@ -1,0 +1,23 @@
+---
+dependency:
+  name: galaxy
+driver:
+  name: vagrant
+vagrant:
+  raw_config_args:
+    - "vm.network 'forwarded_port', guest: 8080, host: 8080"
+  platforms:
+    - name: jessie64
+      box: debian/jessie64
+  providers:
+    - name: virtualbox
+      type: virtualbox
+      options:
+        memory: 4096
+        cpus: 4
+  instances:
+    - name: ansible-gimp-dependencies
+      ansible_groups:
+        - group1
+verifier:
+  name: testinfra
